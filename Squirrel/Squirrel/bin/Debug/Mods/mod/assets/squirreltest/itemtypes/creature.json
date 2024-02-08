@@ -1,0 +1,66 @@
+{
+    "code": "creature",
+    "class": "ItemCreature",
+    "maxstacksize": 64,
+    "variantgroups": [
+      {
+        "code": "type",
+        "states": [ "graysquirrel" ]
+      }
+    ],
+    "shape": { "base": "entity/squirrel" },
+    "texturesByType": {
+      "*-graysquirrel": { 
+        "skin": { 
+          "base": "entity/squirrel/graysquirrel" } } },
+    "creativeinventory": {
+      "general": [ "*" ],
+      "items": [ "*" ],
+      "creatures": [ "*" ]
+    },
+    "materialDensity": 600,
+    "guiTransform": {
+      "rotation": {
+        "x": 4,
+        "y": -59,
+        "z": -180
+      },
+      "origin": {
+        "x": 0.5,
+        "y": 0.3,
+        "z": 0.5
+      },
+      "scale": 1.7
+    },
+    "fpHandTransform": {
+      "rotation": {
+        "x": -180,
+        "y": -96,
+        "z": -180
+      },
+      "origin": {
+        "x": 0.5,
+        "y": 0.15,
+        "z": 0.5
+      },
+      "scale": 6
+    },
+    "groundTransform": {
+      "translation": {
+        "x": 0,
+        "y": 0.15,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": -90,
+        "z": 0
+      },
+      "origin": {
+        "x": 0.5,
+        "y": 0.15,
+        "z": 0.5
+      },
+      "scale": 6
+    }
+  }

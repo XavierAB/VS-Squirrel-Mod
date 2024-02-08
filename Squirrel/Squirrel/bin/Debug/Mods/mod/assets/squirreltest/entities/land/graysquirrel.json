@@ -1,0 +1,150 @@
+{
+    "code": "graysquirrel",
+    "class": "EntityAgent",
+    "hitboxSize": {
+        "x": 0.9,
+        "y": 0.9
+    },
+    "deadHitBoxSize": {
+        "x": 0.7,
+        "y": 0.7
+    },
+    "eyeHeight": 0.4,
+    "drops": [],
+    "client": {
+        "renderer": "Shape",
+        "shape": { "base": "entity/squirrel"},
+        "texture": { "base": "entity/squirrel/graysquirrel" },
+        "behaviors": [
+            { "code": "repulseagents" },
+            { "code": "controlledphysics", "stepHeight": 1.12 },
+            { "code": "floatupwhenstuck", "onlyWhenDead": true },
+            { "code": "interpolateposition" }
+        ],
+        "animations": [
+            {
+                "code": "hurt",
+                "animation": "squirrel_hurt",
+                "animationSpeed": 2.2,
+                "weight": 10,
+                "blendMode": "addAverage"
+            },
+            {
+                "code": "die",
+                "animation": "squirrel_die",
+                "animationSpeed": 1.25,
+                "weight": 10,
+                "blendMode": "average",
+                "triggeredBy": { "onControls": ["dead"] }
+            },
+            {
+                "code": "idle",
+                "animation": "squirrel_idle",
+                "blendMode": "addAverage",
+                "easeOutSpeed": 4,
+                "triggeredBy": { "defaultAnim": true }
+            },
+            {
+                "code": "sleep",
+                "animation": "squirrel_sleep",
+                "animationSpeed": 4,
+                "weight": 4,
+                "blendMode": "addAverage"
+            },
+            {
+                "code": "sit",
+                "animation": "squirrel_sit",
+                "easeInSpeed": 4,
+                "easeOutSpeed": 4,
+                "blendMode": "average"
+            }
+        ]
+    },
+    "server": {
+        "behaviors": [
+            { "code": "repulseagents" },
+            { "code": "controlledphysics", "stepHeight": 1.2 },
+            { "code": "health", "currenthealth": 4, "maxhealth": 4 },
+            { "code": "deaddecay", "hoursToDecay": 96, "decayedBlock": "carcass-tiny" },
+            { "code": "floatupwhenstuck", "onlyWhenDead": true },
+            { "code": "despawn", "minPlayerDistance": 8, "belowLightLevel": 8, "minSeconds": 300 },
+            { 
+                "code": "emotionstates",
+                "states": [
+                    {
+                        "code": "fleeondamage",
+                        "duration": 10,
+                        "chance": 0.5,
+                        "slot": 0,
+                        "priority": 1,
+                        "accumType": "max"
+                    }
+                ]
+            },
+            {
+                "code": "taskai",
+                "aitasks": [
+                    {
+                        "code": "idle",
+                        "priority": 1.2,
+                        "priorityForCancel": 1.35,
+                        "minduration": 4000,
+                        "maxduration": 6000,
+                        "initialMinCoolDown": 2000,
+                        "initialMaxCoolDown": 150000,
+                        "mincooldown": 300000,
+                        "maxcooldown": 10000000,
+                        "animation": "squirrel_idle",
+                        "animationSpeed": 1.0
+                    },
+                    {
+                        "code": "idle",
+                        "priority": 1.2,
+                        "priorityForCancel": 1.35,
+                        "minduration": 4000,
+                        "maxduration": 6000,
+                        "chance": 0.001,
+                        "initialMinCoolDown": 2000,
+                        "initialMaxCoolDown": 150000,
+                        "mincooldown": 300000,
+                        "maxcooldown": 10000000,
+                        "animation": "squirrel_sit",
+                        "animationSpeed": 1.0
+                    },
+                    {
+                        "code": "idle",
+                        "priority": 1.2,
+                        "priorityForCancel": 1.35,
+                        "minduration": 4000,
+                        "maxduration": 6000,
+                        "chance": 0.001,
+                        "initialMinCoolDown": 2000,
+                        "initialMaxCoolDown": 150000,
+                        "mincooldown": 300000,
+                        "maxcooldown": 10000000,
+                        "animation": "squirrel_sleep",
+                        "animationSpeed": 1.0
+                    },
+                    {
+                        "code": "wander",
+                        "priority": 1.0,
+                        "movespeed": 0.008,
+                        "animationSpeed": 1.2,
+                        "animation": "squirrel_run",
+                        "preferredLightLevel": 19
+                    },
+                    {
+                        "code": "lookaround",
+                        "priority": 0.5
+                    }
+                ]
+            }
+        ]
+    },
+    "sounds": {
+        "hurt": "creature/squirrel/Squirrel_Hurt_1",
+        "death": "creature/squirrel/Squirrel_Dead_1",
+        "idle": "creature/squirrel/Squirrel_Chirp_1"
+    },
+    "idleSoundChance": 0.05
+}

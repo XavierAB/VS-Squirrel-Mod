@@ -1,0 +1,13 @@
+{
+    "type": "code",
+    "modid": "squirreltest",
+    "name": "Simply Squirrels",
+    "authors": [
+        "XavierAB", "MarsLeader", "Livebrains", "SilenCide"
+    ],
+    "description": "This is a WIP mod meant for developing our mod-team's understanding of the modding process. This will add a custom squirrel, or more!",
+    "version": "1.0.0",
+    "dependencies": {
+        "game": ""
+    }
+}
